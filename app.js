@@ -18,20 +18,26 @@ var blogSchema = new mongoose.Schema({
     created: {type: Date, default: Date.now}
 }); 
 var Blog = mongoose.model("Blog", blogSchema); 
-
+/*
 Blog.create({
     title: "Test Blog", 
     image: "https://farm9.staticflickr.com/8422/7842069486_c61e4c6025.jpg", 
     body: "This is a blog post"
 }); 
-
+*/ 
 // RESTFUL ROUTES 
 app.get("/", function(req,res) { 
     res.redirect("/blogs"); 
 }); 
 
 app.get("/blogs", function(req,res) {
-    res.render("index"); 
+     Blog.find({}, function(err, blogs){ 
+        if(err) { 
+            console.log("Error: ", err); 
+        } else { 
+            res.render("index", { blogs: blogs});
+        }
+    })
 }); 
 
 app.listen(3000, function() { 
