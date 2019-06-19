@@ -7,7 +7,7 @@ const   express         = require('express'),
  
 
 // APP CONFIG  
-mongoose.connect("mongodb://localhost/blog_app", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/blog_app", { useNewUrlParser: true, useFindAndModify: false });
 app.set("view engine", "ejs"); 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -42,6 +42,7 @@ app.get("/blogs", function(req,res) {
             console.log("Error: ", err); 
         } else { 
             res.render("index", { blogs: blogs});
+            
         }
     })
 }); 
@@ -67,7 +68,7 @@ app.get("/blogs/:id", function(req, res){
         if(err){ 
             res.redirect("/blogs"); 
         } else { 
-            res.render("show", {blog: foundBlog}); 
+            res.render("show", {blog: foundBlog});
         }
     })
 }); 
@@ -95,8 +96,9 @@ app.put("/blogs/:id", function(req, res) {
 }); 
 
 // DELETE ROUTE 
-app.delete("blogs/:id", function(req, res) { 
-    Blog.findByIdAndRemove(req.params.id, function(err) {
+ 
+app.delete("/blogs/:id", function(req, res) { 
+    Blog.findByIdAndRemove(req.params.id, function(err){
         if(err){
             res.redirect("/blogs");
         } else {
@@ -104,7 +106,10 @@ app.delete("blogs/:id", function(req, res) {
         }
     })
 }); 
+ 
 
+
+ 
 app.listen(3000, function() { 
     console.log("Servers up!"); 
 })
