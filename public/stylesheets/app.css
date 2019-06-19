@@ -3,9 +3,18 @@ i.icon {
 }
 .edit.icon { 
     font-size: 0.9em; 
-    padding: 4px;
-    padding-left: 15px;  
+    padding: 6px;
+    padding-left: 10px; 
+     
 }
 .container.main { 
     margin-top: 7.0em; 
+}
+.basic.button { 
+    padding-top: 20px; 
+}
+.navs { 
+    margin-top: 18px; 
+    padding-bottom: 15px; 
+    font-size: 16px; 
 }

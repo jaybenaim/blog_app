@@ -1,36 +1,46 @@
 <% include ./partials/header %>
-<h1>Helllo </h1> 
-<% blogs.forEach(function(blog){ %> 
-    <div>
-    <div class="ui main text container segment" > 
-    <div class="ui huge header"><%= blog.title %></div>
-    <div class="ui top attached "> 
-        <div class="item"> 
-            <img class="ui centered rounded image" src="<%= blog.image %>" > 
-        <div class="content">
-            <span><%= blog.created.toDateString() %> </span> 
-        </div> 
-        <div class="description">
-            <p><%- blog.body %> </p>  
-        </div> 
-    <div class="ui grid"> 
-    <div class="ten wide column"> 
-        <a class="ui blue basic button " href="/blogs/<%= blog._id %>">Read More</a> <br /> 
-    </div>
-    <div class="three wide column"> 
-        <a class="ui blue basic button " href="/blogs/<%= blog._id %>/edit">Edit<i class="edit icon"> </i> </a> 
-    </div> 
-    <div class="two wide column"> 
-        <form class="ui form" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-            <button class="ui red basic button">Delete</button> 
-        </form>  
-    </div> 
-    </div> 
-</div>
-</div> 
-</div> 
-    
-</div>  
 
-<% }) %>
+    <div class="ui main text container" > 
+    <div class="ui huge header">RESTful Blog Page</div>
+    <div class="ui top attached segment">
+    <% blogs.forEach(function(blog){ %> 
+        <div class="ui divided items"> 
+        <div class="item"> 
+            <div class="image"> 
+                <img class="ui centered rounded image" src="<%= blog.image %>" > 
+            </div> 
+        <div class="content">
+            <a class="header" href="/blogs/<%= blog._id %>"> <%= blog.title %> </a>
+            <div class="meta"> 
+                <span><%= blog.created.toDateString() %> </span> 
+            </div> 
+            <div class="description">
+                <p><%- blog.body.substring(0, 100) %>... </p>  
+            </div>
+            <div class="extra"> 
+                <div class="ui grid"> 
+                    <div class="ten wide column"> 
+                        <a class="ui blue basic button " href="/blogs/<%= blog._id %>">Read More<i class="right chevron icon"> </i> </a>  
+                    </div>
+                    <div class="three wide column"> 
+                        <a class="ui blue basic button " href="/blogs/<%= blog._id %>/edit">Edit<i class="edit icon"> </i> </a> 
+                    </div> 
+                    <div class="two wide column"> 
+                        <form class="ui form" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                            <button class="ui red basic button">Delete</button> 
+                        </form>  
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+        </div> 
+        <div class="ui section divider"></div>
+        <% }) %>
+        </div>
+        </div> 
+    </div> 
+
+ 
+
+
 <% include ./partials/footer %>
