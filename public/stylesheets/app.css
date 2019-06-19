@@ -1,7 +1,11 @@
 i.icon { 
     font-size: 2em; 
 }
-
+.edit.icon { 
+    font-size: 0.9em; 
+    padding: 4px;
+    padding-left: 15px;  
+}
 .container.main { 
     margin-top: 7.0em; 
 }

@@ -7,7 +7,7 @@ const   express         = require('express'),
  
 
 // APP CONFIG  
-mongoose.connect("mongodb://localhost/blog_app", { useNewUrlParser: true, useFindAndModify: false });
+mongoose.connect("mongodb://localhost/blog_app", { useNewUrlParser: true , useFindAndModify: false});
 app.set("view engine", "ejs"); 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));

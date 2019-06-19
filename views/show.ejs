@@ -10,10 +10,20 @@
             <div class="description">
                 <p><%= blog.body %> </p>  
             </div> 
-            <form class="ui form" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-                <button class="ui red basic button">Delete</button> 
-            </form> 
         </div>
+    <div class="ui grid"> 
+    <div class="ten wide column"> 
+        <a class="ui blue basic button " href="/blogs/<%= blog._id %>">Read More</a> <br /> 
+    </div>
+    <div class="three wide column"> 
+        <a class="ui blue basic button " href="/blogs/<%= blog._id %>/edit">Edit<i class="edit icon"> </i> </a> 
+    </div> 
+    <div class="two wide column"> 
+        <form class="ui form" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+            <button class="ui red basic button">Delete</button> 
+        </form>  
+    </div> 
+    </div>
     </div> 
 </div> 
 <% include ./partials/footer %>
